@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/XML/1998/namespace" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="xhtml5.xsd"/>
+  <xs:attribute name="base" type="common.data.uri"/>
+  <xs:attribute name="space">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="preserve"/>
+        <xs:enumeration value="default"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="lang" type="common.data.langcode"/>
+</xs:schema>

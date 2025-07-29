@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <xs:include schemaLocation="meta.xsd"/>
+  <xs:include schemaLocation="phrase.xsd"/>
+  <xs:include schemaLocation="block.xsd"/>
+  <xs:include schemaLocation="sectional.xsd"/>
+  <xs:include schemaLocation="structural.xsd"/>
+  <xs:include schemaLocation="revision.xsd"/>
+  <xs:include schemaLocation="embed.xsd"/>
+  <xs:include schemaLocation="ruby.xsd"/>
+  <xs:include schemaLocation="media.xsd"/>
+  <xs:include schemaLocation="core-scripting.xsd"/>
+  <xs:include schemaLocation="tables.xsd"/>
+  <xs:include schemaLocation="form-datatypes.xsd"/>
+  <xs:include schemaLocation="web-forms.xsd"/>
+  <xs:include schemaLocation="web-forms2.xsd"/>
+  <xs:include schemaLocation="applications.xsd"/>
+  <xs:include schemaLocation="data.xsd"/>
+  <xs:include schemaLocation="microdata.xsd"/>
+  <xs:include schemaLocation="web-components.xsd"/>
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!-- ##################################################################### -->
+  <!-- ##################################################################### -->
+  <!--
+    To validate an XHTML 5 document, you must first validate against #
+    this schema and then ALSO validate against assertions.sch        #
+  -->
+  <!-- ##################################################################### -->
+  <!-- XHTML flavor # -->
+  <!-- HTML 4 compat # -->
+  <!-- ##################################################################### -->
+</xs:schema>

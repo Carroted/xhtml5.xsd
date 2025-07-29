@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!-- ##################################################################### -->
+  <!-- src not included -->
+  <xs:attributeGroup name="media.attrs">
+    <xs:annotation>
+      <xs:documentation> RELAX NG Schema for HTML 5: Advanced Embedded Content             #</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="autoplay">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="preload">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="controls">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="loop">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="muted">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="crossorigin">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="media.attrs.autoplay">
+    <xs:attribute name="autoplay" use="required">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="media.attrs.preload">
+    <xs:attribute name="preload" use="required">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="media.attrs.controls">
+    <xs:attribute name="controls" use="required">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="media.attrs.loop">
+    <xs:attribute name="loop" use="required">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="media.attrs.muted">
+    <xs:attribute name="muted" use="required">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="source.elem">
+    <xs:annotation>
+      <xs:documentation>Source: &lt;source&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="source">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:source.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="source.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:source.attrs.src"/>
+    <xs:attribute name="type" type="common.data.mimetype"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="source.attrs.src">
+    <xs:attribute name="src" use="required" type="common.data.uri.non-empty"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="source.attrs.type">
+    <xs:attribute name="type" use="required" type="common.data.mimetype"/>
+  </xs:attributeGroup>
+  <xs:group name="media.source">
+    <xs:annotation>
+      <xs:documentation>Media Source</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="xhtml:source.elem"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="media.source">
+    <xs:annotation>
+      <xs:documentation>Media Source</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="src" type="common.data.uri.non-empty"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="media.attrs.src">
+    <xs:attribute name="src" use="required" type="common.data.uri.non-empty"/>
+  </xs:attributeGroup>
+  <xs:group name="video.elem.flow">
+    <xs:annotation>
+      <xs:documentation>Video: &lt;video&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="video">
+        <xs:complexType mixed="true">
+          <xs:group ref="xhtml:video.inner.flow"/>
+          <xs:attributeGroup ref="xhtml:video.inner.flow"/>
+          <xs:attributeGroup ref="xhtml:video.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="video.elem.phrasing">
+    <xs:sequence>
+      <xs:element name="video">
+        <xs:complexType mixed="true">
+          <xs:group ref="xhtml:video.inner.phrasing"/>
+          <xs:attributeGroup ref="xhtml:video.inner.phrasing"/>
+          <xs:attributeGroup ref="xhtml:video.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="video.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:media.attrs"/>
+    <xs:attribute name="poster" type="common.data.uri.non-empty"/>
+    <xs:attribute name="height" type="common.data.integer.non-negative"/>
+    <xs:attribute name="width" type="common.data.integer.non-negative"/>
+    <xs:attribute name="playsinline">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.role.application"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="video.attrs.poster">
+    <xs:attribute name="poster" use="required" type="common.data.uri.non-empty"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="video.attrs.height">
+    <xs:attribute name="height" use="required" type="common.data.integer.non-negative"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="video.attrs.width">
+    <xs:attribute name="width" use="required" type="common.data.integer.non-negative"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="video.attrs.playsinline">
+    <xs:attribute name="playsinline" use="required">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="video.inner.flow">
+    <xs:sequence>
+      <xs:group ref="xhtml:media.source"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="xhtml:track"/>
+      <xs:group ref="common.inner.transparent.flow"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="video.inner.flow">
+    <xs:attributeGroup ref="xhtml:media.source"/>
+  </xs:attributeGroup>
+  <xs:group name="video.inner.phrasing">
+    <xs:sequence>
+      <xs:group ref="xhtml:media.source"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="xhtml:track"/>
+      <xs:group ref="common.inner.phrasing"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="video.inner.phrasing">
+    <xs:attributeGroup ref="xhtml:media.source"/>
+  </xs:attributeGroup>
+  <xs:group name="audio.elem.flow">
+    <xs:annotation>
+      <xs:documentation>Audio: &lt;audio&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="audio">
+        <xs:complexType mixed="true">
+          <xs:group ref="xhtml:audio.inner.flow"/>
+          <xs:attributeGroup ref="xhtml:audio.inner.flow"/>
+          <xs:attributeGroup ref="xhtml:audio.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="audio.elem.phrasing">
+    <xs:sequence>
+      <xs:element name="audio">
+        <xs:complexType mixed="true">
+          <xs:group ref="xhtml:audio.inner.phrasing"/>
+          <xs:attributeGroup ref="xhtml:audio.inner.phrasing"/>
+          <xs:attributeGroup ref="xhtml:audio.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="audio.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:media.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria.role.application"/>
+  </xs:attributeGroup>
+  <xs:group name="audio.inner.flow">
+    <xs:sequence>
+      <xs:group ref="xhtml:media.source"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="xhtml:track"/>
+      <xs:group ref="common.inner.transparent.flow"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="audio.inner.flow">
+    <xs:attributeGroup ref="xhtml:media.source"/>
+  </xs:attributeGroup>
+  <xs:group name="audio.inner.phrasing">
+    <xs:sequence>
+      <xs:group ref="xhtml:media.source"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="xhtml:track"/>
+      <xs:group ref="common.inner.phrasing"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="audio.inner.phrasing">
+    <xs:attributeGroup ref="xhtml:media.source"/>
+  </xs:attributeGroup>
+  <!---->
+  <xs:element name="track">
+    <xs:complexType>
+      <xs:attributeGroup ref="xhtml:track.attrs"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="track.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="kind">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string xs:string xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="xhtml:track.attrs.src"/>
+    <xs:attribute name="srclang" type="common.data.langcode"/>
+    <xs:attribute name="label" type="xs:string"/>
+    <xs:attribute name="default">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="track.attrs.kind">
+    <xs:attribute name="kind" use="required">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string xs:string xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="track.attrs.src">
+    <xs:attribute name="src" use="required" type="common.data.uri.non-empty"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="track.attrs.srclang">
+    <xs:attribute name="srclang" use="required" type="common.data.langcode"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="track.attrs.label">
+    <xs:attribute name="label" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="track.attrs.default">
+    <xs:attribute name="default" use="required">
+      <xs:simpleType>
+        <xs:union memberTypes="xs:string xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="figure">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:figure.inner"/>
+      <xs:attributeGroup ref="xhtml:figure.attrs"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="figure.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.figure"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="alert"/>
+          <xs:enumeration value="alertdialog"/>
+          <xs:enumeration value="application"/>
+          <xs:enumeration value="article"/>
+          <xs:enumeration value="banner"/>
+          <xs:enumeration value="button"/>
+          <xs:enumeration value="cell"/>
+          <xs:enumeration value="checkbox"/>
+          <xs:enumeration value="columnheader"/>
+          <xs:enumeration value="combobox"/>
+          <xs:enumeration value="complementary"/>
+          <xs:enumeration value="contentinfo"/>
+          <xs:enumeration value="definition"/>
+          <xs:enumeration value="dialog"/>
+          <xs:enumeration value="directory"/>
+          <xs:enumeration value="document"/>
+          <xs:enumeration value="feed"/>
+          <xs:enumeration value="figure"/>
+          <xs:enumeration value="form"/>
+          <xs:enumeration value="grid"/>
+          <xs:enumeration value="gridcell"/>
+          <xs:enumeration value="group"/>
+          <xs:enumeration value="graphics-document"/>
+          <xs:enumeration value="graphics-object"/>
+          <xs:enumeration value="graphics-symbol"/>
+          <xs:enumeration value="heading"/>
+          <xs:enumeration value="img"/>
+          <xs:enumeration value="link"/>
+          <xs:enumeration value="list"/>
+          <xs:enumeration value="listbox"/>
+          <xs:enumeration value="listitem"/>
+          <xs:enumeration value="log"/>
+          <xs:enumeration value="main"/>
+          <xs:enumeration value="marquee"/>
+          <xs:enumeration value="math"/>
+          <xs:enumeration value="menu"/>
+          <xs:enumeration value="menubar"/>
+          <xs:enumeration value="menuitem"/>
+          <xs:enumeration value="menuitemcheckbox"/>
+          <xs:enumeration value="menuitemradio"/>
+          <xs:enumeration value="navigation"/>
+          <xs:enumeration value="none"/>
+          <xs:enumeration value="note"/>
+          <xs:enumeration value="option"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="progressbar"/>
+          <xs:enumeration value="radio"/>
+          <xs:enumeration value="radiogroup"/>
+          <xs:enumeration value="region"/>
+          <xs:enumeration value="row"/>
+          <xs:enumeration value="rowgroup"/>
+          <xs:enumeration value="rowheader"/>
+          <xs:enumeration value="searchbox"/>
+          <xs:enumeration value="scrollbar"/>
+          <xs:enumeration value="search"/>
+          <xs:enumeration value="separator"/>
+          <xs:enumeration value="slider"/>
+          <xs:enumeration value="spinbutton"/>
+          <xs:enumeration value="status"/>
+          <xs:enumeration value="switch"/>
+          <xs:enumeration value="tab"/>
+          <xs:enumeration value="table"/>
+          <xs:enumeration value="tablist"/>
+          <xs:enumeration value="tabpanel"/>
+          <xs:enumeration value="term"/>
+          <xs:enumeration value="textbox"/>
+          <xs:enumeration value="timer"/>
+          <xs:enumeration value="toolbar"/>
+          <xs:enumeration value="tooltip"/>
+          <xs:enumeration value="tree"/>
+          <xs:enumeration value="treegrid"/>
+          <xs:enumeration value="treeitem"/>
+          <xs:enumeration value="doc-abstract"/>
+          <xs:enumeration value="doc-acknowledgments"/>
+          <xs:enumeration value="doc-afterword"/>
+          <xs:enumeration value="doc-appendix"/>
+          <xs:enumeration value="doc-backlink"/>
+          <xs:enumeration value="doc-biblioentry"/>
+          <xs:enumeration value="doc-bibliography"/>
+          <xs:enumeration value="doc-biblioref"/>
+          <xs:enumeration value="doc-chapter"/>
+          <xs:enumeration value="doc-colophon"/>
+          <xs:enumeration value="doc-conclusion"/>
+          <xs:enumeration value="doc-cover"/>
+          <xs:enumeration value="doc-credit"/>
+          <xs:enumeration value="doc-credits"/>
+          <xs:enumeration value="doc-dedication"/>
+          <xs:enumeration value="doc-endnote"/>
+          <xs:enumeration value="doc-endnotes"/>
+          <xs:enumeration value="doc-epigraph"/>
+          <xs:enumeration value="doc-epilogue"/>
+          <xs:enumeration value="doc-errata"/>
+          <xs:enumeration value="doc-example"/>
+          <xs:enumeration value="doc-footnote"/>
+          <xs:enumeration value="doc-foreword"/>
+          <xs:enumeration value="doc-glossary"/>
+          <xs:enumeration value="doc-glossref"/>
+          <xs:enumeration value="doc-index"/>
+          <xs:enumeration value="doc-introduction"/>
+          <xs:enumeration value="doc-noteref"/>
+          <xs:enumeration value="doc-notice"/>
+          <xs:enumeration value="doc-pagebreak"/>
+          <xs:enumeration value="doc-pagelist"/>
+          <xs:enumeration value="doc-part"/>
+          <xs:enumeration value="doc-preface"/>
+          <xs:enumeration value="doc-prologue"/>
+          <xs:enumeration value="doc-pullquote"/>
+          <xs:enumeration value="doc-qna"/>
+          <xs:enumeration value="doc-subtitle"/>
+          <xs:enumeration value="doc-tip"/>
+          <xs:enumeration value="doc-toc"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-modal">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-pressed">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-colspan" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-colindex" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-rowspan" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-rowindex" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-checked">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-sort">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ascending"/>
+          <xs:enumeration value="descending"/>
+          <xs:enumeration value="none"/>
+          <xs:enumeration value="other"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-readonly">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-autocomplete">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="inline"/>
+          <xs:enumeration value="list"/>
+          <xs:enumeration value="both"/>
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-level" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-multiselectable">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-colcount">
+      <xs:simpleType>
+        <xs:union memberTypes="common.data.integer.non-negative">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="-1"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-rowcount">
+      <xs:simpleType>
+        <xs:union memberTypes="common.data.integer.non-negative">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="-1"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-posinset" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-setsize">
+      <xs:simpleType>
+        <xs:union memberTypes="common.data.integer.non-negative">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="-1"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-valuemax" type="common.data.float"/>
+    <xs:attribute name="aria-valuemin" type="common.data.float"/>
+    <xs:attribute name="aria-valuenow" type="common.data.float"/>
+    <xs:attribute name="aria-valuetext" type="xs:string"/>
+    <xs:attribute name="aria-multiline">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="figure.inner">
+    <xs:choice>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="xhtml:figcaption"/>
+        <xs:group ref="common.inner.flow"/>
+      </xs:sequence>
+      <xs:sequence>
+        <xs:group ref="common.inner.flow"/>
+        <xs:element minOccurs="0" ref="xhtml:figcaption"/>
+      </xs:sequence>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="figcaption">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:figcaption.inner">
+          <xs:attributeGroup ref="xhtml:figcaption.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="figcaption.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+          <xs:enumeration value="group"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:complexType name="figcaption.inner" mixed="true">
+    <xs:group ref="common.inner.flow"/>
+  </xs:complexType>
+</xs:schema>

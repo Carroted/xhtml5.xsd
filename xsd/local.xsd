@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <xs:include schemaLocation="common.xsd"/>
+  <xs:include schemaLocation="aria.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="xhtml5.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+</xs:schema>

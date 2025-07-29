@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!-- ##################################################################### -->
+  <xs:simpleType name="form.data.mimetypelist">
+    <xs:annotation>
+      <xs:documentation> RELAX NG Schema for HTML 5: Datatypes related to forms            #</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.pattern">
+    <xs:annotation>
+      <xs:documentation>ECMAScript Regular Expression</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.datetime-local">
+    <xs:annotation>
+      <xs:documentation>Temporal</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.date">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.month">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.week">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.time">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.emailaddress">
+    <xs:annotation>
+      <xs:documentation>Email</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.emailaddresslist">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.color">
+    <xs:annotation>
+      <xs:documentation>Color</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <!--
+    		xsd:string {
+    			pattern = "#[a-fA-F0-9]{6}"
+    		}
+  -->
+  <xs:simpleType name="form.data.stringwithoutlinebreaks">
+    <xs:annotation>
+      <xs:documentation>Text without line breaks</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.nonemptystring">
+    <xs:annotation>
+      <xs:documentation>Non-empty string</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+</xs:schema>
